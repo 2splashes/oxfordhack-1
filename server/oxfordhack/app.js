@@ -58,6 +58,13 @@ app.use(require('express-session')({
 app.use(passport.initialize());
 app.use(passport.session());
 
+var isAuthenticated = function (req, res, next) {
+    if (req.isAuthenticated()) return next();
+    else res.redirect('/login');
+}
+
+app.use(isAuthenticated);
+
 app.use('/', index);
 app.use('/login', login);
 app.use('/logout', logout);
