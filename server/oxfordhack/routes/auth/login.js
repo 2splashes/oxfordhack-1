@@ -3,7 +3,7 @@ var router = express.Router();
 var passport = require('passport');
 
 router.get('/', function(req, res, next) {
-    res.render('layouts/auth/login');
+    res.render('layouts/login');
 });
 
 router.get('/facebook', passport.authenticate('facebook'));
