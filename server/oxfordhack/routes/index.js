@@ -11,7 +11,7 @@ router.use(isAuthenticated);
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
-    res.redirect('layout/index');
+    res.redirect('layouts/index');
 });
 
 module.exports = router;
