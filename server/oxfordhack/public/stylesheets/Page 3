@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="stylesheet.css"/>
+		<title> Welcome </title>
+	</head>
+	<body>
+		<p>
+		Enter First Name:</p>
+		<div class="boxed">
+  		
+		</div>
+		<p>Enter Last Name:</p>
+		<div class="boxed">
+
+		</div>
+		<p>
+		Enter Email ID:</p>
+		<div class="boxed">
+  		
+		</div>
+		<p>Enter Password:</p>
+		<div class="boxed">
+		</div>
+
+		<div class="boxed"> Confirm
+		</div>
+
+	</body>
+</html>
