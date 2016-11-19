@@ -2,13 +2,14 @@ var express = require('express');
 var router = express.Router();
 var passport = require('passport');
 
-/* GET home page. */
-router.get('/',
-    passport.authenticate('facebook', {failureRedirect: '/login', successRedirect: '/home'})
-);
+var isAuthenticated = function (req, res, next) {
+    if (req.isAuthenticated()) return next();
+    else res.redirect('/login');
+}
 
-router.get('/home', function (req, res, next) {
-  res.render('layout/index');
+/* GET home page. */
+router.get('/', function (req, res, next) {
+    res.redirect('layout/index');
 });
 
 module.exports = router;
