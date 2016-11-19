@@ -19,7 +19,7 @@ var app = express();
 passport.use(new Strategy({
         clientID: '365354147137718',
         clientSecret: '115a9b29823e452fa20dd7060f7cab80',
-        callbackURL: '/login/facebook/return'
+        callbackURL: 'http://ec2-54-214-87-162.us-west-2.compute.amazonaws.com/login/facebook/return'
     },
     function (accessToken, refreshToken, profile, cb) {
         return cb(null, profile);
