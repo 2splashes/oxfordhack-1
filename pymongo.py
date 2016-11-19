@@ -1,3 +1,10 @@
+from pymongo import MongoClient
+
+client = MongoClient('mongodb://')
+# db = client.database
+# collection = 
+
+
 def update_history(collection, _id, new_vector):
 	'''
 	collection: The MongoDB collection to be updated.
