@@ -6,3 +6,28 @@ body {
 a {
   color: #00B7FF;
 }
+
+p {
+	text-align: center;
+	font-family: Garamond, serif;
+	font-size: 18px;
+}
+
+div {
+	border-radius: 5px;
+	border: 2px solid black;
+	height: 50px;
+	width: 120px;
+	margin: auto;
+	text-align: center;
+}
+
+span {
+	font-weight: bold;
+	font-size: 18px;
+	color: #ffffff;
+}
+
+.boxed {
+  border: 1px solid black ;
+}
