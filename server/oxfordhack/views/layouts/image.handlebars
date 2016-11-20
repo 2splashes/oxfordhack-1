@@ -22,6 +22,7 @@
             Webcam.snap(function (dataURI) {
                 console.log(dataURI);
                 Webcam.upload(dataURI, '/load', function () {
+                    console.log('success!');
                 });
             });
         };
