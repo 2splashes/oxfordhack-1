@@ -3,11 +3,13 @@ var router = express.Router();
 var Users = require('../models/users');
 
 router.get('/', function (req, res, next) {
-    Users.getHistory(req.user.id, function (history) {
-        if (history[0].sadness > history[1].sadness) {
-            res.render('layouts/result', {message: 'You seem a little down. Do you want to talk to someone about it?'});
-        } else {
+    EmotionModel.depressedProbability(req.user.id, function (prob) {
+        if (prob < 0.5) {
             res.render('layouts/result', {message: 'Thanks for playing! Have a wonderful day.'});
+        } else if (prob < 0.8) {
+            res.render('layouts/result', {message: 'You seem a little down. Need some more cat gifs?'});
+        } else {
+            res.render('layouts/result', {message: "We're having trouble making you smile. If something's wrong, you know you can always talk to your friends or family."})
         }
     });
 });
