@@ -1,5 +1,5 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://admin:oxfordnotox@localhost');
+mongoose.connect('mongodb://admin:oxfordnotox@localhost/app');
 
 var User = mongoose.model('User', { name: String,
     id: {type: Number, index: {unique: true}},
