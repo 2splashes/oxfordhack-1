@@ -19,6 +19,7 @@ var derivativeMeans = function (id, n, callback) {
 var depressedProbability = function (id, callback) {
 	derivativeMeans(id, 5, function (firstDel, secondDel) {
 		var firstMean = 0;
+		var secondMean = 0;
 		for (var i = 0; i < firstDel.length; i++) firstMean += firstDel[i];
 		for (var i = 0; i < secondDel.length; i++) secondMean += secondDel[i];
 		firstMean /= firstDel.length;
