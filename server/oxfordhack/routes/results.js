@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var Users = require('../models/users');
+var EmotionModel = require('../models/emotion_model');
 
 router.get('/', function (req, res, next) {
     EmotionModel.depressedProbability(req.user.id, function (prob) {
