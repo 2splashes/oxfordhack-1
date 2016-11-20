@@ -1,5 +1,7 @@
 var users = require('./users');
 
+var threshold = 0.1;
+
 var derivativeMeans = function (id, n, callback) {
 	users.getHistory(id, function (history) {
 		n = Math.min(n, history.length);
