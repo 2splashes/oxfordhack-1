@@ -24,12 +24,10 @@ router.post('/', upload.single('webcam'), function (req, res, next) {
         console.log(options);
         request(options, function (err, res, body) {
             if (err || body.length == 0) {
-                next();
                 return;
             }
             Users.addResult(req.user.id, body[0].scores);
             console.log(body);
-            next();
         });
     });
 });
