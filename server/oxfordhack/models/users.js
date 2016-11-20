@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://admin:oxfordnotox@localhost');
 
 var User = mongoose.model('User', { name: String,
-    id: {type: Number, index: {unique: true}},
+    _id: {type: Number, index: {unique: true}},
     history: [{
     date: {type: Date, default: Date.now},
     anger: Number,
@@ -15,7 +15,7 @@ var User = mongoose.model('User', { name: String,
     surprise: Number }] });
 
 var addUser = function (id) {
-    User.update({id: id}, {}, {upsert: true, setDefaultsOnInsert: true}, function () {});
+    User.update({_id: id}, {}, {upsert: true, setDefaultsOnInsert: true}, function () {});
 };
 
 var addResult = function (id, result) {
