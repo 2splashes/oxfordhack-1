@@ -3,7 +3,6 @@ var router = express.Router();
 var multer = require('multer');
 var upload = multer({dest: 'public/uploads'});
 var request = require('request');
-var fs = require('fs');
 
 var options = {
     url: 'https://api.projectoxford.ai/emotion/v1.0/recognize',
@@ -14,14 +13,12 @@ var options = {
 };
 
 router.post('/', upload.single('webcam'), function (req, res, next) {
-    fs.rename(req.file.path, req.file.path+'.jpeg', function () {
-        options.form = {
-            url: 'https://ec2-54-191-173-129.us-west-2.compute.amazonaws.com/' + req.file.path + '.jpeg'
-        };
-        console.log(options.form.url);
-        request(options, function (err, res, body) {
-            console.log(body);
-        });
+    options.form = {
+        url: 'https://ec2-54-191-173-129.us-west-2.compute.amazonaws.com/uploads/' + req.file.name
+    };
+    console.log(options.form.url);
+    request(options, function (err, res, body) {
+        console.log(body);
     });
 });
 
