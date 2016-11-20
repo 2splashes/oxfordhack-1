@@ -26,12 +26,7 @@ var depressedProbability = function (id, callback) {
 		for (var i = 0; i < secondDel.length; i++) secondMean += secondDel[i];
 		firstMean /= firstDel.length;
 		secondMean /= secondDel.length;
-		var prob = firstMean;
-		if (firstMean < threshold) {
-			prob = secondMean;
-		}
-
-		prob = (1 - prob) / 3;
+		var prob = 0.3 - (firstMean*2);
 
 		callback(prob);
 	});
