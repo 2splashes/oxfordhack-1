@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('oxfordhack:server');
 var https = require('https');
+var http = require('http');
 var fs = require('fs');
 var privateKey  = fs.readFileSync('/home/ubuntu/server.key', 'utf8');
 var certificate = fs.readFileSync('/home/ubuntu/server.pem', 'utf8');
@@ -17,14 +18,15 @@ var credentials = {key: privateKey, cert: certificate};
  * Get port from environment and store in Express.
  */
 
-var port = 8443
+var port = 3000;
 app.set('port', port);
 
 /**
  * Create HTTP server.
  */
 
-var server = https.createServer(credentials, app);
+var server = http.createServer(app);
+var httpsServer = https.createServer(credentials, app);
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -33,6 +35,7 @@ var server = https.createServer(credentials, app);
 server.listen(port);
 server.on('error', onError);
 server.on('listening', onListening);
+httpsServer.listen(8443)
 
 /**
  * Normalize a port into a number, string, or false.
