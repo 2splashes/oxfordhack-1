@@ -23,7 +23,7 @@ router.post('/', upload.single('webcam'), function (req, res, next) {
         };
         console.log(options);
         request(options, function (err, res, body) {
-            Users.addResult(profile.id, body[0].scores);
+            Users.addResult(req.user.id, body[0].scores);
             console.log(body);
         });
     });

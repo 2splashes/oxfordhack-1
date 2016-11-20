@@ -15,8 +15,7 @@ var User = mongoose.model('User', { name: String,
     surprise: Number }] });
 
 var addUser = function (id) {
-    var n = new User({name: id, history: []});
-    n.save();
+    User.update({id: id}, {}, {upsert: true, setDefaultsOnInsert: true}, function () {});
 };
 
 var addResult = function (id, result) {
