@@ -23,7 +23,6 @@ router.post('/', upload.single('webcam'), function (req, res, next) {
         };
         console.log(options);
         request(options, function (err, res, body) {
-            console.log(res);
             if (err || body.length == 0) {
                 return;
             }
