@@ -30,7 +30,19 @@ var addResult = function (id, result) {
     );
 };
 
+var getHistory = function (id, callback) {
+    User.findById(id, function (err, user) {
+        if (err) {
+            console.error('No such user ' + toString(user) + '!');
+            return handleError(err);
+        }
+
+        callback(user.history);
+    });
+};
+
 module.exports = {
     addUser: addUser,
-    addResult: addResult
+    addResult: addResult,
+    getHistory: getHistory
 };

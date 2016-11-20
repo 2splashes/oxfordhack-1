@@ -14,6 +14,7 @@ var Strategy = require('passport-facebook').Strategy;
 var index = require('./routes/index');
 var load = require('./routes/load');
 var image = require('./routes/image');
+var results = require('./routes/results');
 var login = require('./routes/auth/login');
 var logout = require('./routes/auth/logout');
 
@@ -69,6 +70,7 @@ app.use('/logout', logout);
 app.use('/', index);
 app.use('/load', load);
 app.use('/image', image);
+app.use('/results', results);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
