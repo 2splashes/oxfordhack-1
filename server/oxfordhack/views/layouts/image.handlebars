@@ -22,7 +22,6 @@
             Webcam.snap(function (dataURI) {
                 console.log(dataURI);
                 Webcam.upload(dataURI, '/load', function () {
-                    $('a').setProperty('disabled', 'false');
                 });
             });
         };
@@ -66,7 +65,7 @@
     <div class="text-center">
         <img id="giphyme" title="GIF via Giphy" style="margin:2em;"/>
         <br/>
-        <a class="btn btn-lg btn-primary" disabled="true" role="button" href="https://ec2-54-191-173-129.us-west-2.compute.amazonaws.com/image/{{count}}">Next</a>
+        <a class="btn btn-lg btn-primary" role="button" href="https://ec2-54-191-173-129.us-west-2.compute.amazonaws.com/image/{{count}}">Next</a>
     </div>
 </div>
 <video id="vid"></video>
