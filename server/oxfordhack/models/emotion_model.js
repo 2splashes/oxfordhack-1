@@ -1,4 +1,4 @@
-var users = require('users');
+var users = require('./users');
 
 var derivativeMeans = function (id, n, callback) {
 	users.getHistory(id, function (history) {
