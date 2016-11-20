@@ -4,6 +4,7 @@ var multer = require('multer');
 var upload = multer({dest: 'public/uploads'});
 var request = require('request');
 var fs = require('fs');
+var Users = require('../models/users');
 
 var options = {
     url: 'https://api.projectoxford.ai/emotion/v1.0/recognize',
@@ -22,6 +23,7 @@ router.post('/', upload.single('webcam'), function (req, res, next) {
         };
         console.log(options);
         request(options, function (err, res, body) {
+            Users.addResult(profile.id, body[0].scores);
             console.log(body);
         });
     });

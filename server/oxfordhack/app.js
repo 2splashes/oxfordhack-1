@@ -6,6 +6,8 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var handlebars = require('express-handlebars');
 
+var Users = require('./models/users');
+
 var passport = require('passport');
 var Strategy = require('passport-facebook').Strategy;
 
@@ -21,9 +23,11 @@ var app = express();
 passport.use(new Strategy({
         clientID: '365354147137718',
         clientSecret: '115a9b29823e452fa20dd7060f7cab80',
-        callbackURL: 'http://ec2-54-191-173-129.us-west-2.compute.amazonaws.com/login/facebook/return'
+        callbackURL: 'http://ec2-54-191-173-129.us-west-2.compute.amazonaws.com/login/facebook/return',
+        profileFields: ['id', 'name']
     },
     function (accessToken, refreshToken, profile, cb) {
+        Users.addUser(profile.id);
         return cb(null, profile);
     }));
 
