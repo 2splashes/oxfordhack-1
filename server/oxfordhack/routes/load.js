@@ -11,6 +11,7 @@ var options = {
         'Content-Type': 'application/json',
         'Ocp-Apim-Subscription-Key': "1521013cecd149fca7543bac79c8784d"
     },
+    method: 'POST',
     json: true
 };
 
@@ -19,7 +20,7 @@ router.post('/', upload.single('webcam'), function (req, res, next) {
         options.body = {
             url: 'ec2-54-191-173-129.us-west-2.compute.amazonaws.com/uploads/' + req.file.filename + '.jpeg'
         };
-        console.log(options.json);
+        console.log(options);
         request(options, function (err, res, body) {
             console.log(body);
         });
