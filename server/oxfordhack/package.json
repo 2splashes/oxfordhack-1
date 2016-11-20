@@ -12,6 +12,7 @@
     "express": "~4.14.0",
     "express-handlebars": "^3.0.0",
     "express-session": "^1.14.2",
+    "fs": "0.0.1-security",
     "handlebars": "latest",
     "https": "^1.0.0",
     "morgan": "~1.7.0",

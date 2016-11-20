@@ -8,6 +8,7 @@ var app = require('../app');
 var debug = require('debug')('oxfordhack:server');
 var http = require('http');
 var https = require('https');
+var fs = require('fs');
 var privateKey  = fs.readFileSync('/home/ubuntu/server.key', 'utf8');
 var certificate = fs.readFileSync('/home/ubuntu/server.crt', 'utf8');
 
