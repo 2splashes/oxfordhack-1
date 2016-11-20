@@ -23,7 +23,7 @@ var addResult = function (id, result) {
         {$push: {history: result}},
         {safe: true, upsert: true, new : true},
         function(err, model) {
-            console.log(err);
+            console.log(model);
         }
     );
 };
