@@ -28,6 +28,7 @@ passport.use(new Strategy({
         profileFields: ['id', 'name']
     },
     function (accessToken, refreshToken, profile, cb) {
+        console.log(profile);
         Users.addUser(profile.id);
         return cb(null, profile);
     }));
