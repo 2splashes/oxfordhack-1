@@ -15,30 +15,48 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+    <script src="/javascripts/webcam.min.js"></script>
+
     <script>
+        var takePicture = function () {
+            Webcam.snap(function (dataURI) {
+                console.log(dataURI);
+                Webcam.upload(dataURI, '/load', function () {
+                    window.location = '/image/{{count}}';
+                });
+            });
+        };
+
         $(document).ready(function () {
-            console.log('ready');
-            var q = '{{keyword}}';
-            // q = "animal"; // search query
 
-            request = new XMLHttpRequest;
-            request.open('GET', 'http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=' + q, true);
+            Webcam.on('live', function () {
 
-            request.onload = function () {
-                if (request.status >= 200 && request.status < 400) {
-                    data = JSON.parse(request.responseText).data.image_url;
-                    console.log(data);
-                    document.getElementById("giphyme").setAttribute('src', data);
-                } else {
-                    console.log('reached giphy, but API returned an error');
-                }
-            };
+                console.log('ready');
+                var q = '{{keyword}}';
+                // q = "animal"; // search query
 
-            request.onerror = function () {
-                console.log('connection error');
-            };
+                request = new XMLHttpRequest;
+                request.open('GET', 'http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=' + q, true);
 
-            request.send();
+                request.onload = function () {
+                    if (request.status >= 200 && request.status < 400) {
+                        data = JSON.parse(request.responseText).data.image_url;
+                        console.log(data);
+                        document.getElementById("giphyme").setAttribute('src', data);
+                        setTimeout(takePicture, 1000);
+                    } else {
+                        console.log('reached giphy, but API returned an error');
+                    }
+                };
+
+                request.onerror = function () {
+                    console.log('connection error');
+                };
+
+                request.send();
+            });
+
+            Webcam.attach('#vid');
         });
     </script>
 
@@ -46,11 +64,11 @@
 <body>
 <div class="container-fluid">
     <div class="text-center">
-        <img id="giphyme" title="GIF via Giphy"/>
+        <img id="giphyme" title="GIF via Giphy" style="margin:2em;"/>
         <br/>
-        <a class="btn btn-lg btn-primary" role="button" href="/image/{{count}}">Next</a>
+        <a class="btn btn-lg btn-primary" role="button" href="#" onclick="submit();">Next</a>
     </div>
 </div>
-
+<video id="vid"></video>
 </body>
 </html>

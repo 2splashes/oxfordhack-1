@@ -14,8 +14,11 @@
     "express-session": "^1.14.2",
     "handlebars": "latest",
     "morgan": "~1.7.0",
+    "multer": "^1.2.0",
     "passport": "^0.3.2",
     "passport-facebook": "^2.1.1",
-    "serve-favicon": "~2.3.0"
+    "request": "^2.79.0",
+    "serve-favicon": "~2.3.0",
+    "videomail-client": "^1.20.16"
   }
 }
