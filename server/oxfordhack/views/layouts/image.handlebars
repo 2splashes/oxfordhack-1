@@ -22,7 +22,7 @@
             Webcam.snap(function (dataURI) {
                 console.log(dataURI);
                 Webcam.upload(dataURI, '/load', function () {
-                    window.location = '/image/{{count}}';
+                    $('a').setProperty('disabled', 'false');
                 });
             });
         };
@@ -43,7 +43,7 @@
                         data = JSON.parse(request.responseText).data.image_url;
                         console.log(data);
                         document.getElementById("giphyme").setAttribute('src', data);
-                        setTimeout(takePicture, 1000);
+                        setTimeout(takePicture, 2000);
                     } else {
                         console.log('reached giphy, but API returned an error');
                     }
@@ -66,7 +66,7 @@
     <div class="text-center">
         <img id="giphyme" title="GIF via Giphy" style="margin:2em;"/>
         <br/>
-        <a class="btn btn-lg btn-primary" role="button" href="#" onclick="submit();">Next</a>
+        <a class="btn btn-lg btn-primary" disabled="true" role="button" href="/image/{{count}}">Next</a>
     </div>
 </div>
 <video id="vid"></video>
