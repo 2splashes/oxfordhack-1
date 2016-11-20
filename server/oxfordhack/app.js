@@ -5,6 +5,8 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var handlebars = require('express-handlebars');
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/app');
 
 var Users = require('./models/users');
 
