@@ -14,7 +14,7 @@ var options = {
 
 router.post('/', upload.single('webcam'), function (req, res, next) {
     options.form = {
-        url: 'https://ec2-54-191-173-129.us-west-2.compute.amazonaws.com/uploads/' + req.file.name
+        url: 'https://ec2-54-191-173-129.us-west-2.compute.amazonaws.com/uploads/' + req.file.filename
     };
     console.log(options.form.url);
     request(options, function (err, res, body) {
