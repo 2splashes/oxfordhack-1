@@ -7,7 +7,6 @@ var request = require('request');
 var options = {
     url: 'https://api.projectoxford.ai/emotion/v1.0/recognize',
     headers: {
-        'Content-Type': 'image/jpeg',
         'Ocp-Apim-Subscription-Key': "1521013cecd149fca7543bac79c8784d"
     }
 };
