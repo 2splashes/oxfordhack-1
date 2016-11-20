@@ -19,10 +19,11 @@ var options = {
 router.post('/', upload.single('webcam'), function (req, res, next) {
     fs.rename(req.file.path, req.file.path + '.jpeg', function () {
         options.body = {
-            url: 'http://ec2-54-191-173-129.us-west-2.compute.amazonaws.com/uploads/' + req.file.filename + '.jpeg'
+            url: 'https://ec2-54-191-173-129.us-west-2.compute.amazonaws.com/uploads/' + req.file.filename + '.jpeg'
         };
         console.log(options);
         request(options, function (err, res, body) {
+            if (err) return;
             Users.addResult(req.user.id, body[0].scores);
             console.log(body);
         });
