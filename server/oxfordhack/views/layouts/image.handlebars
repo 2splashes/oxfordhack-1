@@ -27,7 +27,7 @@
 
 <script>
     $.ready(function () {
-        var q = document.getElementById('mySearch').value;
+        var q = '{{keyword}}';
         // q = "animal"; // search query
 
         request = new XMLHttpRequest;
@@ -37,7 +37,7 @@
             if (request.status >= 200 && request.status < 400) {
                 data = JSON.parse(request.responseText).data.image_url;
                 console.log(data);
-                document.getElementById("giphyme").setAttribute('src', {{sourcePath}});
+                document.getElementById("giphyme").setAttribute('src', data);
             } else {
                 console.log('reached giphy, but API returned an error');
             }
