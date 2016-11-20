@@ -15,6 +15,32 @@
     <!-- Latest compiled and minified JavaScript -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
+    <script>
+        $.ready(function () {
+            var q = '{{keyword}}';
+            // q = "animal"; // search query
+
+            request = new XMLHttpRequest;
+            request.open('GET', 'http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=' + q, true);
+
+            request.onload = function () {
+                if (request.status >= 200 && request.status < 400) {
+                    data = JSON.parse(request.responseText).data.image_url;
+                    console.log(data);
+                    document.getElementById("giphyme").setAttribute('src', data);
+                } else {
+                    console.log('reached giphy, but API returned an error');
+                }
+            };
+
+            request.onerror = function () {
+                console.log('connection error');
+            };
+
+            request.send();
+        });
+    </script>
+
 </head>
 <body>
 <div class="container-fluid">
@@ -24,32 +50,6 @@
         <a class="btn btn-lg btn-primary" role="button" href="/image/{{count}}">Next</a>
     </div>
 </div>
-
-<script>
-    $.ready(function () {
-        var q = '{{keyword}}';
-        // q = "animal"; // search query
-
-        request = new XMLHttpRequest;
-        request.open('GET', 'http://api.giphy.com/v1/gifs/random?api_key=dc6zaTOxFJmzC&tag=' + q, true);
-
-        request.onload = function () {
-            if (request.status >= 200 && request.status < 400) {
-                data = JSON.parse(request.responseText).data.image_url;
-                console.log(data);
-                document.getElementById("giphyme").setAttribute('src', data);
-            } else {
-                console.log('reached giphy, but API returned an error');
-            }
-        };
-
-        request.onerror = function () {
-            console.log('connection error');
-        };
-
-        request.send();
-    });
-</script>
 
 </body>
 </html>
