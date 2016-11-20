@@ -10,7 +10,7 @@ var http = require('http');
 var https = require('https');
 var fs = require('fs');
 var privateKey  = fs.readFileSync('/home/ubuntu/server.key', 'utf8');
-var certificate = fs.readFileSync('/home/ubuntu/server.crt', 'utf8');
+var certificate = fs.readFileSync('/home/ubuntu/server.pem', 'utf8');
 
 var credentials = {key: privateKey, cert: certificate};
 
